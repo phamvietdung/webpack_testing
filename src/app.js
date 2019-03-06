@@ -1,9 +1,11 @@
 const config = require("./config.js");
 const utils = require('util');
-const components_url = config.components;
+
+// Who the hell need a 3.0.0 version with a GPL 3.0 license key.
+const fullpage  = require("fullpage.js");
 
 
-
+// Semantic UI loader
 require("../src/components/accordion.css");
 require("../src/components/accordion.js");
 
@@ -12,9 +14,9 @@ require("../src/components/loader.css");
 
 require("../src/components/form");
 
-console.log(utils.format(components_url + "accordion.css"));
+require("../src/components/menu.css");
 
 
-$('.ui.accordion')
-  .accordion()
-;
+$(document).ready(function() {
+  $('#fullpage').fullpage();
+});
