@@ -1,21 +1,22 @@
-//import * as button from "!style-loader!css-loader!../src/css/button.css";
+const config = require("./config.js");
+const utils = require('util');
 
-import * as button from "../src/css/button.css";
+// Who the hell need a 3.0.0 version with a GPL 3.0 license key.
+const fullpage  = require("fullpage.js");
 
-const people = require('../src/js/people.js');
 
-const location = require('../src/js/location.js');
+// Semantic UI loader
+require("../src/components/accordion.css");
+require("../src/components/accordion.js");
 
-//const $ = require('jquery');
+require("../src/components/input.css");
+require("../src/components/loader.css");
 
-people.getname();
+require("../src/components/form");
 
-location.cities.forEach(function(item, index){
-    console.log(item);
-})
+require("../src/components/menu.css");
 
-var tmp = [1,2,5,4,2,3,6,45];
 
-var rs = tmp.filter(x => x > 3).join('-');
-
-console.log(rs);
+$(document).ready(function() {
+  $('#fullpage').fullpage();
+});

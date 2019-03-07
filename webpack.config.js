@@ -1,9 +1,8 @@
 const path = require('path');
-
-
+var webpack = require('webpack');
 
 module.exports = {
-    mode: 'none', //development,production,none
+    mode: 'development', //development,production,none
     entry: './src/app.js',
     output: {
         path: __dirname + '/dist',
@@ -30,10 +29,41 @@ module.exports = {
                         plugins: ['@babel/plugin-proposal-object-rest-spread']
                     }
                 }
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|html)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8000, // Convert images < 8kb to base64 strings
+                            name: 'img/[name].[ext]'//[hash]-[name].[ext]
+                        }
+                    }
+                ]
+            },{
+                test: /\.(ttf|woff2|woff|eot)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1, // Convert images < 8kb to base64 strings
+                            name: 'semantic/themes/default/assets/fonts/[name].[ext]'//[hash]-[name].[ext]
+                        }
+                    }
+                ]
             }
+
         ]
-    }
-
+    },
+    devtool: false,
+    optimization: {
+        minimize: true
+    },
+    plugins:[
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
+    ]
 }
-
-
