@@ -16,7 +16,24 @@ require("../src/components/form");
 
 require("../src/components/menu.css");
 
+// Modal
+
+require("../src/components/modal.js");
+require("../src/components/modal.css");
+
+// Dimmer and Transition to meet the Modal requirement
+require("../src/components/dimmer.js");
+require("../src/components/dimmer.css");
+
+
+require("../src/components/transition.js");
+require("../src/components/transition.css");
+
 
 $(document).ready(function() {
-  $('#fullpage').fullpage();
+    $('#fullpage').fullpage();
+    
+    $('.btn-modal').on('click',function(){
+        $('.ui.modal').modal('show'); 
+    });
 });
